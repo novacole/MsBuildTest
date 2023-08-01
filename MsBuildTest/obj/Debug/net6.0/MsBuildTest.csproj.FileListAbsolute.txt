@@ -1,0 +1,12 @@
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\bin\Debug\net6.0\MsBuildTest.deps.json
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\bin\Debug\net6.0\MsBuildTest.dll
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\bin\Debug\net6.0\MsBuildTest.pdb
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.csproj.AssemblyReference.cache
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.AssemblyInfoInputs.cache
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.AssemblyInfo.cs
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.csproj.CoreCompileInputs.cache
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.dll
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\refint\MsBuildTest.dll
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\MsBuildTest.pdb
+C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\obj\Debug\net6.0\ref\MsBuildTest.dll

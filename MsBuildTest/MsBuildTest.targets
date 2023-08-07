@@ -1,0 +1,14 @@
+<Project>
+	<UsingTask TaskName="MsBuildTest.MsBuildTestTask" AssemblyFile="$(USERPROFILE)\.nuget\packages\msbuildtesttask\1.0.0\build\net6.0\MsBuildTest.dll" Condition="'$(MSBuildRuntimeType)' == 'Core'"/>
+	<UsingTask TaskName="MsBuildTest.MsBuildTestTask" AssemblyFile="$(USERPROFILE)\.nuget\packages\msbuildtesttask\1.0.0\build\net472\MsBuildTest.dll" Condition="'$(MSBuildRuntimeType)' != 'Core'"/>
+
+	<Target Name="MsBuildTest" AfterTargets="Test" Condition="$(IsTestProject)==true">
+		<Message Text="TestFileFullPath: $(TargetPath)" Importance="high" />
+		<MsBuildTestTask VSTestRunnerVersion="17.6.3" TestFileFullPath="$(TargetPath)" VSTestSetting="$(VSTestSetting)" VSTestTestAdapterPath="$(VSTestTestAdapterPath)"
+						 VSTestFramework="$(VSTestFramework)" VSTestPlatform="$(VSTestPlatform)" VSTestTestCaseFilter="$(VSTestTestCaseFilter)" VSTestLogger="$(VSTestLogger)"
+						 VSTestResultsDirectory="$(VSTestResultsDirectory)"	 VSTestVerbosity="$(VSTestVerbosity)" VSTestCollect="$(VSTestCollect)" VSTestBlame="$(VSTestBlame)"
+						 VSTestBlameCrash="$(VSTestBlameCrash)" VSTestBlameCrashDumpType="$(VSTestBlameCrashDumpType)" VSTestBlameCrashCollectAlways="$(VSTestBlameCrashCollectAlways)"
+						 VSTestBlameHang="$(VSTestBlameHang)" VSTestBlameHangDumpType="$(VSTestBlameHangDumpType)" VSTestTraceDataCollectorDirectoryPath="$(VSTestTraceDataCollectorDirectoryPath)"
+						 VSTestNoLogo="$(VSTestNoLogo)" VSTestArtifactsProcessingMode="$(VSTestArtifactsProcessingMode)" VSTestSessionCorrelationId="$(VSTestSessionCorrelationId)" />
+	</Target>
+</Project>

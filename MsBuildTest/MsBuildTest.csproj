@@ -1,21 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-	  <TargetFrameworks>net472;net6.0</TargetFrameworks>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <PackageVersion>2.0.7</PackageVersion>
-	  <PackageId>MsBuildTestTask</PackageId>
-	  <Description>https://www.1eswiki.com/wiki/Using_VSTS_NPM_with_CloudBuild</Description>
-	  <NoDefaultExcludes>true</NoDefaultExcludes>
-	  <BuildOutputTargetFolder>build\</BuildOutputTargetFolder>
-	  <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
-	  <DevelopmentDependency>true</DevelopmentDependency>
-
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net472;net6.0</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageVersion>1.0.0</PackageVersion>
+		<PackageId>Microsoft.MSBuildTest</PackageId>
+		<Description>MSBuild Test</Description>
+		<NoDefaultExcludes>true</NoDefaultExcludes>
+		<BuildOutputTargetFolder>build\</BuildOutputTargetFolder>
+		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+		<DevelopmentDependency>true</DevelopmentDependency>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Build.Utilities.Core"  Version="17.3.2" />
 		<PackageReference Include="Microsoft.Build" ExcludeAssets="runtime" Version="17.3.2" />
 		<PackageReference Include="Microsoft.Build.Framework" ExcludeAssets="runtime"  Version="17.3.2" />
 		<PackageReference Include="Microsoft.Build.Tasks.Core" ExcludeAssets="runtime"  Version="17.3.2" />
+		<PackageReference Include="Microsoft.TestPlatform" Version="17.6.3" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="MsBuildTest.targets" Pack="true" PackagePath="sdk\"/>
 	</ItemGroup>
 </Project>

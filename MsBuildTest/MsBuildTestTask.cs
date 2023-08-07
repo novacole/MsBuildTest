@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Build.Framework;
 
 namespace MsBuildTest
 {
@@ -35,7 +34,6 @@ namespace MsBuildTest
 
         public string[] VSTestCLIRunSettings { get; set; }
 
-        [Required]
         // Initialized to empty string to allow declaring as non-nullable, the property is marked as
         // required so we can ensure that the property is set to non-null before the task is executed.
         public string VSTestConsolePath { get; set; } = "";
@@ -67,6 +65,7 @@ namespace MsBuildTest
         public string VSTestArtifactsProcessingMode { get; set; }
 
         public string VSTestSessionCorrelationId { get; set; }
+        public string VSTestRunnerVersion { get; set; }
 
         public override bool Execute()
         {
@@ -93,12 +92,6 @@ namespace MsBuildTest
             var allowfailureWithoutError = BuildEngine.GetType().GetProperty("AllowFailureWithoutError");
             allowfailureWithoutError?.SetValue(BuildEngine, true);
 
-            //_vsTestForwardingApp = new VSTestForwardingApp(VSTestConsolePath, CreateArgument());
-            //if (!string.IsNullOrEmpty(VSTestFramework))
-            //{
-            //    Console.WriteLine(Resources.Resources.TestRunningSummary, TestFileFullPath, VSTestFramework);
-            //}
-          //  Debugger.Launch();
             return ExecuteTest().GetAwaiter().GetResult() != 0 ? false : true;
         }
 
@@ -330,20 +323,23 @@ namespace MsBuildTest
         }
         private Task<int> ExecuteTest()
         {
-
+#if NET6_0_OR_GREATER
+            string PackagePath = $@"{Environment.GetEnvironmentVariable("USERPROFILE")}\.nuget\packages\microsoft.testplatform\{VSTestRunnerVersion}\tools\net6.0\Common7\IDE\Extensions\TestPlatform\";
+#else            
+            string PackagePath = $@"{Environment.GetEnvironmentVariable("USERPROFILE")}\.nuget\packages\microsoft.testplatform\{VSTestRunnerVersion}\tools\net462\Common7\IDE\Extensions\TestPlatform\";
+#endif
             var processInfo = new ProcessStartInfo
             {
-                FileName = "vstest.console.exe",
-                Arguments = string.Join(" ", AddArgs()),
+                FileName = $"{PackagePath}vstest.console.exe",
+                Arguments = string.Join(" ", CreateArgument()),
                 UseShellExecute = false,
             };
-
 
             using (var activeProcess = new Process { StartInfo = processInfo })
             {
                 activeProcess.Start();
                 activeProcess.WaitForExit();
-                return System.Threading.Tasks.Task.FromResult(activeProcess.ExitCode);
+                return Task.FromResult(activeProcess.ExitCode);
             }
         }
     }

@@ -1,8 +1,0 @@
-<Project>
-<UsingTask TaskName="MsBuildTest.MsBuildTestTask" AssemblyFile="C:\Users\colecarter\source\repos\MsBuildTest\MsBuildTest\bin\Debug\net42\MsBuildTest.dll" />
-
-<Target Name="MsBuildTest">
-    <MsBuildTestTask  />
-
- </Target>
-</Project>
